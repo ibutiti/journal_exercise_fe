@@ -52,7 +52,10 @@
             Journal
           </div>
           <!-- Desktop menu -->
-          <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+          <div
+            v-if="$auth.loggedIn"
+            class="hidden sm:ml-6 sm:flex sm:space-x-8"
+          >
             <NuxtLink
               v-for="menuItem in menuItems"
               :key="menuItem.id"
@@ -109,8 +112,8 @@
               tabindex="-1"
             >
               <a
-                href="#"
                 id="user-menu-item-2"
+                href="#"
                 class="block px-4 py-2 text-sm text-gray-700"
                 role="menuitem"
                 tabindex="-1"

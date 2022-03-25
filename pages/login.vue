@@ -1,19 +1,3 @@
-<!--
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <template>
   <div
     class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8"
@@ -114,7 +98,6 @@ export default {
         password: this.password,
         rememberMe: this.rememberMe,
       }
-      console.log(payload)
       this.$auth.loginWith('laravelSanctum', {
         data: payload,
       })
