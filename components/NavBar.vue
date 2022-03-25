@@ -117,6 +117,7 @@
                 class="block px-4 py-2 text-sm text-gray-700"
                 role="menuitem"
                 tabindex="-1"
+                @click="logout"
                 >Sign out</a
               >
             </div>
@@ -159,6 +160,10 @@ export default {
     },
     toggleProfile() {
       this.profileOpen = !this.profileOpen
+    },
+    async logout() {
+      await this.$auth.logout('laravelSanctum')
+      this.$router.push('/login')
     },
   },
 }
