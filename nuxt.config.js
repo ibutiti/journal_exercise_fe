@@ -34,6 +34,7 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/vuetify',
   ],
   tailwindcss: {
     config: {
@@ -53,6 +54,12 @@ export default {
     '@nuxtjs/auth-next',
   ],
   auth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/entries',
+    },
     strategies: {
       laravelSanctum: {
         provider: 'laravel/sanctum',
@@ -60,16 +67,28 @@ export default {
         endpoints: {
           login: {
             url: '/api/login',
+            method: 'post',
           },
         },
       },
     },
   },
-
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.BROWSER_BASE_URL,
+    credentials: true,
+  },
+  publicRuntimeConfig: {
+    baseURL: process.env.BROWSER_BASE_URL,
+    axios: {
+      browserBaseURL: process.env.BROWSER_BASE_URL,
+    },
+  },
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.BROWSER_BASE_URL,
+    },
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa

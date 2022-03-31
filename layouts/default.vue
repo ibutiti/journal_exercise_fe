@@ -1,8 +1,9 @@
 <template>
-  <div class="h-full">
+  <div>
     <nav-bar />
-
-    <Nuxt />
+    <div class="container h-full mx-auto sm:px-6 lg:px-8">
+      <Nuxt />
+    </div>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <nav class="bg-white shadow">
+  <nav class="bg-white">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -48,9 +48,12 @@
         <div
           class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
         >
-          <div class="flex-shrink-0 flex items-center text-purple-700">
+          <nuxt-link
+            to="/entries"
+            class="flex-shrink-0 sm:flex items-center text-purple-700"
+          >
             Journal
-          </div>
+          </nuxt-link>
           <!-- Desktop menu -->
           <div
             v-if="$auth.loggedIn"
@@ -149,8 +152,8 @@ export default {
       menuOpen: false,
       profileOpen: false,
       menuItems: [
-        { id: 1, text: 'Entries', link: '/' },
-        { id: 2, text: 'Therapy Goals', link: '/goals' },
+        { id: 1, text: 'Dashboard', link: '/dashboard' },
+        { id: 2, text: 'Entries', link: '/entries' },
       ],
     }
   },
@@ -162,6 +165,7 @@ export default {
       this.profileOpen = !this.profileOpen
     },
     async logout() {
+      this.toggleProfile()
       await this.$auth.logout('laravelSanctum')
       this.$router.push('/login')
     },
@@ -170,10 +174,10 @@ export default {
 </script>
 
 <style scoped>
-.desktop-menu.nuxt-link-exact-active {
+.desktop-menu.nuxt-link-active {
   @apply border-indigo-500 text-gray-900 border-b-2;
 }
-.mobile-menu.nuxt-link-exact-active {
+.mobile-menu.nuxt-link-active {
   @apply bg-indigo-50 border-indigo-500 text-indigo-700;
 }
 </style>
