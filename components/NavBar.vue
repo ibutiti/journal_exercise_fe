@@ -151,10 +151,7 @@ export default {
     return {
       menuOpen: false,
       profileOpen: false,
-      menuItems: [
-        { id: 1, text: 'Dashboard', link: '/dashboard' },
-        { id: 2, text: 'Entries', link: '/entries' },
-      ],
+      menuItems: [{ id: 2, text: 'Entries', link: '/entries' }],
     }
   },
   methods: {

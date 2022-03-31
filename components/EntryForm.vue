@@ -83,6 +83,7 @@ export default {
       const payload = {
         title: this.entry.title,
         content: this.entry.content,
+        is_shared: this.entry.is_shared,
       }
       try {
         let result
